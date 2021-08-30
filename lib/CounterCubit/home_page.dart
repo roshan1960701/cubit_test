@@ -26,6 +26,17 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 20.0,),
 
+          BlocBuilder<CounterCubit,dynamic>(builder:(context,state){
+            return IconButton(
+              icon: Icon(state ?Icons.favorite : Icons.favorite_border,color: state ? Colors.red : Colors.grey,),
+              onPressed:(){
+                context.read<CounterCubit>().getLikes();
+              },
+            );
+          }),
+          SizedBox(
+            height: 20.0,),
+
           MaterialButton(
             color: Colors.greenAccent,
             child: Text('Movies App'),

@@ -1,13 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CounterCubit extends Cubit{
- CounterCubit():super(0);
+ CounterCubit():super(false);
 
  String Name = "Roshan";
  static final newName = "Roshan Wadekar";
-
+ bool like = false;
  List names = ["Roshan","Ishank","Shrashti","Rohit","Pascal","Dominic"];
  int no = 0;
+
+ initialState(){
+  like = false;
+ }
 
  void showText(){
   emit(names[no]);
@@ -27,6 +31,11 @@ class CounterCubit extends Cubit{
 */
   //emit(names);
   //emit(state + 1);
+ }
+
+ void getLikes() {
+ like = like ? false : true;
+ emit(like);
  }
 
 }
