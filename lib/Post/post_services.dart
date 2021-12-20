@@ -35,7 +35,6 @@ class PostServices{
       var response = await http.post(url,
           headers:<String, String> {
             'X-Access-Token': token,
-            'Authorization': 'Basic YWRtaW46bXlwY290',
           },
           body: {
             'page_no': '1',
