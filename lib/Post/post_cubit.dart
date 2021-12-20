@@ -16,8 +16,8 @@ class PostCubit extends Cubit<PostState>{
 
     try{
       emit(LoadingState());
-      final post = await postServices.getPost();
-      emit(LoadedState(post));
+      final dealer = await postServices.getDealers();
+      emit(LoadedState(dealer));
     }
     catch(e){
       emit(ErrorState());

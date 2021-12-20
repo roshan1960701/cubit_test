@@ -5,6 +5,7 @@ import 'package:cubit_test/Post/post_cubit.dart';
 import 'package:cubit_test/Post/post_services.dart';
 import 'package:cubit_test/counter_observer.dart';
 import 'package:cubit_test/CounterCubit/home_page.dart';
+import 'package:cubit_test/state/home_cubit.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers:[
           BlocProvider(create: (context) => CounterCubit()),
+          BlocProvider(create: (context) => HomeCubit()),
           BlocProvider(create: (context) => MoviesCubit(
             repository: MovieRepository(
               Dio(),
@@ -30,14 +32,7 @@ class MyApp extends StatelessWidget {
             postServices:  PostServices()
           )),
 
-
         ], child:MaterialApp(home: HomePage()));
-    /*return MaterialApp(
-      title: 'Cubit Samples',
-      home: BlocProvider(
-          create: (_) => CounterCubit(),
-          child: HomePage()),
-    );*/
   }
 }
 

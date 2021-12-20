@@ -14,6 +14,7 @@ class _PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: BlocBuilder<PostCubit, PostState>(
         builder: (context, state) {
           if (state is LoadingState) {
@@ -25,15 +26,14 @@ class _PostPageState extends State<PostPage> {
               child: Icon(Icons.close),
             );
           } else if (state is LoadedState) {
-            final post = state.post;
-
-            return ListView.builder(
-              itemCount: post.length,
+            final post = state.data;
+            print(post.data.totalRecords);
+            return /*Center(child: Text('${post.data.totalRecords}'))*/ ListView.builder(
+              itemCount: post.data.result.length,
               itemBuilder: (context, index) => Card(
                 child: ListTile(
-                  leading: Text('${post[index].id}'),
-                  title: Text('${post[index].title}'),
-
+                  leading: Text('${post.data.result[index].designation}'),
+                  title: Text('${post.data.result[index].name}'),
                 ),
               ),
             );

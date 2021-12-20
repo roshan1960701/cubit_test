@@ -1,6 +1,7 @@
 import 'package:cubit_test/CounterCubit/counter_cubit.dart';
 import 'package:cubit_test/Movie/movie_page.dart';
 import 'package:cubit_test/Post/post_page.dart';
+import 'package:cubit_test/state/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -37,6 +38,27 @@ class HomePage extends StatelessWidget {
           SizedBox(
             height: 20.0,),
 
+          BlocBuilder<CounterCubit,dynamic>(builder:(context,state){
+            return CheckboxListTile(
+              // key: ValueKey(id),
+              title: Text('check here'),
+              value: context.read<CounterCubit>().check,
+              onChanged: (value){
+                context.read<CounterCubit>().getCheck();
+                /*scrollingDealerBloc.checkboxValues[key] = value;
+
+        if(scrollingDealerBloc.checkboxValues[key] == true){
+          scrollingDealerBloc.dealersId.add('$id');
+        }else{
+          scrollingDealerBloc.dealersId.remove('$id');
+        }*/
+                /*setState(() {
+          });*/
+
+              },
+            );
+          }),
+
           MaterialButton(
             color: Colors.greenAccent,
             child: Text('Movies App'),
@@ -53,8 +75,18 @@ class HomePage extends StatelessWidget {
             onPressed:(){
               Navigator.push(context,MaterialPageRoute(builder: (context) => PostPage()));
             },
-          )
+          ),
 
+          BlocBuilder<HomeCubit,dynamic>(builder:(context,state){
+            return CheckboxListTile(
+              // key: ValueKey(id),
+              title: Text('check here'),
+              value: context.read<HomeCubit>().like,
+              onChanged: (value){
+                context.read<HomeCubit>().getLikes();
+              },
+            );
+          }),
           /*BlocBuilder<CounterCubit,dynamic>(builder:(context,state){
             return Text()
           })*/

@@ -8,6 +8,7 @@ class CounterCubit extends Cubit{
  bool like = false;
  List names = ["Roshan","Ishank","Shrashti","Rohit","Pascal","Dominic"];
  int no = 0;
+ bool check =false;
 
  initialState(){
   like = false;
@@ -37,5 +38,11 @@ class CounterCubit extends Cubit{
  like = like ? false : true;
  emit(like);
  }
+
+ void getCheck() {
+  check = !check;
+  emit(check);
+ }
+
 
 }

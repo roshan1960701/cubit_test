@@ -1,3 +1,5 @@
+import 'package:cubit_test/Post/GetDealer.dart';
+
 import '../Post/post_model.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,11 +17,12 @@ class LoadingState extends PostState{
 }
 
 class LoadedState extends PostState{
-  LoadedState(this.post);
-
-  final List<Post> post;
+  // LoadedState(this.post);
+LoadedState(this.data);
+  // final List<Post> post;
+final GetMarketingPersons data;
   @override
-  List<Object> get props => [post];
+  List<Object> get props => [/*post*/data];
 }
 
 class ErrorState extends PostState{
